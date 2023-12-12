@@ -67,7 +67,7 @@ td,th{
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title mb-4"><?php echo lang('today_order_list'); ?> <button class="btn btn-sm btn-primary" onclick="demoPdf('quotation')">PDF</button> <button class="btn btn-sm btn-success" onclick="ExportToExcel('quotation','xlsx')">Excel</button><a target="__blank" href=<?php echo base_url("Dashboard/printDiv/")?> class="btn btn-default btn-sm"><button class="btn btn-sm  btn-secondary "  style="margin-left:.8vh;">Print</button></a></h4>
+                        <h4 class="card-title mb-4"><?php echo lang('today_order_list'); ?> <button class="btn btn-sm btn-primary" onclick="demoPdf('quotation')">PDF</button> <button class="btn btn-sm btn-success" onclick="ExportToExcel('quotation','xlsx')">Excel</button><button class="btn btn-sm  btn-secondary "  onclick="printdiv('quotation');" style="margin-left:.8vh;">Print</button></h4>
                         <div class="table-responsive quo table-wrapper" id="quotation">
                             <table class="table table-centered  mb-0" >
                                 <thead class="thead-light">
@@ -946,11 +946,14 @@ function ExportToExcel(data,type, fn, dl) {
 
 
     function printdiv(elem) {
-  var header_str = '<html><head><title>' + document.title  + '</title></head><body>';
+// var body_content=document.title
+
+var image_header='<img src="assets/images/invoicehead.jpg">'
+var header_str ='<html><head><title></title><head>';
   var footer_str = '</body></html>';
   var new_str = document.getElementById(elem).innerHTML;
   var old_str = document.body.innerHTML;
-  document.body.innerHTML = header_str + new_str + footer_str;
+  document.body.innerHTML =image_header + header_str + new_str + footer_str;
   window.print();
   document.body.innerHTML = old_str;
   return false;
@@ -958,3 +961,4 @@ function ExportToExcel(data,type, fn, dl) {
 
 </script>
 
+<!-- <img src="'.base_url('assets/images/invoicehead.jpg').'"> -->
