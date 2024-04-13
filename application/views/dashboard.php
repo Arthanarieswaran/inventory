@@ -119,7 +119,7 @@ td,th{
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title mb-4"><?php echo lang('today_invoice_list'); ?> <button class="btn btn-sm btn-primary" onclick="demoPdf('invoice')">PDF</button> <button class="btn btn-sm btn-success" onclick="ExportToExcel('invoice','xlsx')">Excel</button><button class="btn btn-sm  btn-secondary "  onclick="printdiv('quotation');" style="margin-left:.8vh;">Print</button></h4>
+                        <h4 class="card-title mb-4"><?php echo lang('today_invoice_list'); ?> <button class="btn btn-sm btn-primary" onclick="demoPdf('invoice')">PDF</button> <button class="btn btn-sm btn-success" onclick="ExportToExcel('invoice','xlsx')">Excel</button><button class="btn btn-sm  btn-secondary "  onclick="printdiv('invoice');" style="margin-left:.8vh;">Print</button></h4>
                         <div class="table-responsive inv table-wrapper" id="invoice">
                             <table class="table table-centered  mb-0">
                                 <thead class="thead-light">
@@ -306,7 +306,7 @@ td,th{
         <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title mb-4">Receipt List <button class="btn btn-sm btn-primary" onclick="demoPdf('receipt')">PDF</button> <button class="btn btn-sm btn-success" onclick="ExportToExcel('receipt','xlsx')">Excel</button><button class="btn btn-sm  btn-secondary "  onclick="printdiv('quotation');" style="margin-left:.8vh;">Print</button></h4>
+                        <h4 class="card-title mb-4">Receipt List <button class="btn btn-sm btn-primary" onclick="demoPdf('receipt')">PDF</button> <button class="btn btn-sm btn-success" onclick="ExportToExcel('receipt','xlsx')">Excel</button><button class="btn btn-sm  btn-secondary "  onclick="printdiv('receipt');" style="margin-left:.8vh;">Print</button></h4>
                         <div class="table-responsive quo table-wrapper" id="receipt">
                             <table class="table table-centered  mb-0">
                                 <thead class="thead-light">
@@ -348,7 +348,7 @@ td,th{
             <div class="col-lg-6">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title mb-4">Invoice Product List <button class="btn btn-sm btn-primary" onclick="demoPdf('invoiceproduct')">PDF</button> <button class="btn btn-sm btn-success" onclick="ExportToExcel('invoiceproduct','xlsx')">Excel</button><button class="btn btn-sm  btn-secondary "  onclick="printdiv('quotation');" style="margin-left:.8vh;">Print</button></h4>
+                        <h4 class="card-title mb-4">Invoice Product List <button class="btn btn-sm btn-primary" onclick="demoPdf('invoiceproduct')">PDF</button> <button class="btn btn-sm btn-success" onclick="ExportToExcel('invoiceproduct','xlsx')">Excel</button><button class="btn btn-sm  btn-secondary "  onclick="printdiv('invoiceproduct');" style="margin-left:.8vh;">Print</button></h4>
                         <div class="table-responsive quo table-wrapper" id="invoiceproduct">
                             <table class="table table-centered  mb-0">
                                 <thead class="thead-light">
@@ -388,7 +388,7 @@ td,th{
             <div class="col-lg-6">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title mb-4">Quotation Product List <button class="btn btn-sm btn-primary" onclick="demoPdf('quotationproduct')">PDF</button> <button class="btn btn-sm btn-success" onclick="ExportToExcel('quotationproduct','xlsx')">Excel</button><button class="btn btn-sm  btn-secondary "  onclick="printdiv('quotation');" style="margin-left:.8vh;">Print</button></h4>
+                        <h4 class="card-title mb-4">Quotation Product List <button class="btn btn-sm btn-primary" onclick="demoPdf('quotationproduct')">PDF</button> <button class="btn btn-sm btn-success" onclick="ExportToExcel('quotationproduct','xlsx')">Excel</button><button class="btn btn-sm  btn-secondary "  onclick="printdiv('quotationproduct');" style="margin-left:.8vh;">Print</button></h4>
                         <div class="table-responsive quo table-wrapper" id="quotationproduct">
                             <table class="table table-centered  mb-0">
                                 <thead class="thead-light">
@@ -431,7 +431,7 @@ td,th{
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title mb-4">Vendor List <button class="btn btn-sm btn-primary" onclick="demoPdf('vendor')">PDF</button> <button class="btn btn-sm btn-success" onclick="ExportToExcel('vendor','xlsx')">Excel</button><button class="btn btn-sm  btn-secondary "  onclick="printdiv('quotation');" style="margin-left:.8vh;">Print</button></h4>
+                        <h4 class="card-title mb-4">Vendor List <button class="btn btn-sm btn-primary" onclick="demoPdf('vendor')">PDF</button> <button class="btn btn-sm btn-success" onclick="ExportToExcel('vendor','xlsx')">Excel</button><button class="btn btn-sm  btn-secondary "  onclick="printdiv('vendor');" style="margin-left:.8vh;">Print</button></h4>
                         <div class="table-responsive quo table-wrapper" id="vendor">
                             <table class="table table-centered  mb-0">
                                 <thead class="thead-light">
@@ -954,8 +954,13 @@ var header_str ='<html><head><title></title><head>';
   var new_str = document.getElementById(elem).innerHTML;
   var old_str = document.body.innerHTML;
   document.body.innerHTML =image_header + header_str + new_str + footer_str;
-  window.print();
-  document.body.innerHTML = old_str;
+//   window.print();
+setTimeout(function () {
+    // Print the content of the new window
+    window.print();
+    document.body.innerHTML = old_str;
+}, 500);
+  
   return false;
 }
 

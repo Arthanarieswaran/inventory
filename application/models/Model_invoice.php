@@ -532,8 +532,12 @@ class Model_invoice extends CI_Model
 	}
 	public function getBalacesheet($data)
 	{
+		$month = $data['month'];
+		$year = $data['year'];
+		$lastDayOfMonth = date("t", strtotime("$year-$month-01"));
+		// echo $lastDayOfMonth;
 		$startDate = '01-'.$data['month'].'-'.$data['year'].' 00:00:00';
-		$endDate = '31-'.$data['month'].'-'.$data['year'].' 23:29:59';
+		$endDate = $lastDayOfMonth.'-'.$data['month'].'-'.$data['year'].' 23:29:59';
 		$sql = "SELECT customer.name as cname,customer.gst_no as c_gst_no,products.name as pname,invoice.date_time as dt,invoice.bill_no as invoice_no,products.cgst_tax as cgst,products.sgst_tax as sgst,products.category_id as category,products.hsn as hsn,invoice_item.qty as qty,invoice_item.rate as price,invoice_item.amount as amount,invoice_item.product_type as product_type,invoice_item.kgs as kgs,invoice_item.sqm as sqm,invoice_item.sqf as sqf,invoice_item.gst_rate as gst_rate,invoice_item.net_rate_amount as netAmount FROM invoice_item INNER JOIN invoice ON invoice.id=invoice_item.order_id JOIN customer ON customer.id=invoice.customer_id JOIN products ON products.id=invoice_item.product_id  WHERE invoice.date_time BETWEEN " .strtotime($startDate). " AND ".strtotime($endDate);
 		$query = $this->db->query($sql,$data);
 

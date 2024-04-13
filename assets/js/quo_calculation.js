@@ -358,8 +358,8 @@ function getProductData(row_id) {
                         prodData = response.inv_kgs + ' kgs';
                         prodDataQuo = response.quo_kgs + ' kgs';
                     }
-                    $("#prodDetailin_" + row_id).html(response.name + '<br><b>HSN - </b>' + response.hsn);
-                    $("#prodDetailquo_" + row_id).html(response.name);
+                    $("#prodDetailin_" + row_id).html(response.name + '<br><b>HSN - </b>' + response.hsn+ '<br><b>Qty - </b>' + response.quotation_qty+' , '+prodData);
+                    $("#prodDetailquo_" + row_id).html(response.name+ '<br><b>Qty - </b>' + response.quotation_qty+' , '+prodDataQuo);
                     addRow();
                     productFullTotal(row_id);
 
