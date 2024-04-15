@@ -1011,13 +1011,8 @@ var header_str ='<html><head><title></title><head>';
   var new_str = document.getElementById(elem).innerHTML;
   var old_str = document.body.innerHTML;
   document.body.innerHTML =image_header + header_str + new_str + footer_str;
-//   window.print();
-setTimeout(function () {
-    // Print the content of the new window
-    window.print();
-    document.body.innerHTML = old_str;
-}, 500);
-
+  window.print();
+  document.body.innerHTML = old_str;
   return false;
 }
 
