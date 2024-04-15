@@ -281,8 +281,11 @@ class Model_inpurchase extends CI_Model
 
 	public function getBalacesheet($data)
 	{
+		$month = $data['month'];
+		$year = $data['year'];
+		$lastDayOfMonth = date("t", strtotime("$year-$month-01"));
 		$startDate = $data['year'].'-'.$data['month'].'-01';
-		$endDate = $data['year'].'-'.$data['month'].'-31';
+		$endDate = $data['year'].'-'.$data['month'].'-'.$lastDayOfMonth;
 		// echo date('Y-m-d', strtotime($endDate));
 		$sql = "SELECT vendor.name as cname,vendor.gst_no as c_gst_no,products.name as pname,inpurchase.invoice_date as dt,inpurchase.bill_no as invoice_no,products.cgst_tax as cgst,products.sgst_tax as sgst,products.category_id as category,products.hsn as hsn,inpurchase_item.qty as qty,inpurchase_item.rate as price,inpurchase_item.amount as amount,inpurchase_item.product_type as product_type,inpurchase_item.kgs as kgs,inpurchase_item.sqm as sqm,inpurchase_item.sqf as sqf FROM inpurchase_item INNER JOIN inpurchase ON inpurchase.id=inpurchase_item.purchase_id JOIN vendor ON vendor.id=inpurchase.vendor_id JOIN products ON products.id=inpurchase_item.product_id  WHERE inpurchase.invoice_date BETWEEN '".$startDate."' and '".$endDate."'";
 		$query = $this->db->query($sql,$data);

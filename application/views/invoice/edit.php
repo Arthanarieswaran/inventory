@@ -314,6 +314,14 @@
                       <input type="text" class="form-control" id="ttlkg" name="ttlkg" autocomplete="off" disabled value="0">
                     </div>
                   </div>
+                  <div class="form-group d-flex">
+                    <label for="vehicle_no" class="col-sm-5 control-label">
+                    Vehicle No
+                    </label>
+                    <div class="col-sm-5">
+                      <input type="text" class="form-control" id="vehicle_no" name="vehicle_no" autocomplete="off" disabled  value="<?php echo $order_data['order']['vehicle_no'] ?>">
+                    </div>
+                  </div>
                 </div>
               </div>
               <!-- /.box-body -->

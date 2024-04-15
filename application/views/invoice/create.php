@@ -297,6 +297,13 @@
                     </div>
                   </div>
 
+                  <div class="form-group d-flex">
+                    <label for="vehicle_no" class="col-sm-5 control-label">Vehicle No</label>
+                    <div class="col-sm-5">
+                      <input type="text" class="form-control" id="vehicle_no" name="vehicle_no" autocomplete="off"  required>
+                    </div>
+                  </div>
+
                 </div>
               </div>
               <!-- /.box-body -->
